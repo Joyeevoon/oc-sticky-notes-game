@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FCF7D3">
+<title>今天想记录什么？· 云朵便利贴</title>
+<meta name="description" content="把今天想记住的小事，写进云朵便利贴里。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 手绘描边滤镜：让字有一点手写的抖动 -->
+<svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <filter id="hand-drawn" x="-15%" y="-15%" width="130%" height="130%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.014 0.02" numOctaves="2" seed="11" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="1.35" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<main class="stage">
+
+  <section class="note" id="note" aria-label="云朵便利贴">
+    <img class="note__bg" src="assets/note-bg.webp" alt="" draggable="false">
+    <div class="note__paper" id="paper" aria-live="polite" aria-label="记录的内容"></div>
+    <img class="note__char" src="assets/character.webp" alt="便利贴小助手" draggable="false">
+    <div class="bubble" id="bubble">
+      <span class="bubble__text">你好，今天你想记录什么？</span>
+    </div>
+  </section>
+
+  <form class="composer" id="composer" novalidate>
+    <div class="composer__top">
+      <span class="dots" id="dots" aria-hidden="true"></span>
+      <span class="count" id="count">还能贴 6 条</span>
+    </div>
+
+    <div class="composer__row">
+      <div class="fieldwrap">
+        <label class="sr-only" for="input">写下今天想记录的事</label>
+        <input class="field" id="input" name="entry" type="text"
+               placeholder="写下今天想记住的事…" autocomplete="off"
+               maxlength="20" enterkeyhint="done">
+        <span class="field__count" id="fieldCount" aria-hidden="true">0/20</span>
+      </div>
+      <button class="btn" id="addBtn" type="submit">贴上</button>
+    </div>
+
+    <p class="hint" id="hint">每条最多 20 个字，一共可以贴 6 条</p>
+    <button class="reset" id="resetBtn" type="button" hidden>重写这张便利贴</button>
+  </form>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
